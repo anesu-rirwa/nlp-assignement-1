@@ -109,13 +109,13 @@ p = os.path.join(dirname, 'static/flower_features.pkl')
 # loop through each image in the dataset
 for flower in flowers:
     # try to extract the features and update the dictionary
-    try:
-        feat = extract_features(flower,model)
-        data[flower] = feat
+    #try:
+    feat = extract_features(flower,model)
+    data[flower] = feat
     # if something fails, save the extracted features as a pickle file (optional)
-    except:
-        with open(p,'wb') as file:
-            pickle.dump(data,file)
+    #except:
+        #with open(p,'rb') as file:
+            #pickle.dump(data,file)
           
  
 # get a list of the filenames
