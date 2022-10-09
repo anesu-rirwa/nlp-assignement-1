@@ -54,16 +54,16 @@ with colab_file:
 flowers = []
 
 # creates a ScandirIterator aliased as files
-with os.scandir(path) as files:
-  # loops through each file in the directory
-    for file in files:
-        if file.name.endswith('.png'):
-          # adds only the image files to the flowers list
-            flowers.append(file.name)
+#with os.scandir(path) as files:
+# loops through each file in the directory
+for file in os.listdir(path):
+    if file.name.endswith('.png'):
+        # adds only the image files to the flowers list
+        flowers.append(file.name)
 
-    # view the first 15 flower entries
-    st.header('First 15 flower entries in the image directory')
-    st.image(flowers[:15])
+# view the first 15 flower entries
+st.header('First 15 flower entries in the image directory')
+st.image(flowers[:15])
 
 # load the image as a 224x224 array
 img = load_img(flowers[0], target_size=(224,224))
@@ -102,7 +102,7 @@ def extract_features(file, model):
     return features
 
 data = {}
-p = r"nlp-cluster-webpage\static\flower_features.pkl" # path to save the extracted features
+p = r"./static/flower_features.pkl" # path to save the extracted features
 
 # loop through each image in the dataset
 for flower in flowers:
