@@ -42,8 +42,8 @@ os.chdir(path)
 
 
 with header:
-    st.title('Image Cluster')
-    st.text('Image clustering according to image similarity or the similarity of te texts that describe the images.')
+    st.title('Image Cluster Webpage')
+    st.text('Image clustering according to image similarity or the similarity of the texts that describe the images.')
 
 with colab_file:
     st.header('Google Colab File Link')
@@ -61,9 +61,9 @@ with os.scandir(path) as files:
           # adds only the image files to the flowers list
             flowers.append(file.name)
 
-    # view the first 10 flower entries
-    st.header('First 10 flower entries in the image directory')
-    st.image(flowers[:10])
+    # view the first 15 flower entries
+    st.header('First 15 flower entries in the image directory')
+    st.image(flowers[:15])
 
 # load the image as a 224x224 array
 img = load_img(flowers[0], target_size=(224,224))
@@ -121,13 +121,15 @@ filenames = np.array(list(data.keys()))
 
 # get a list of just the features
 feat = np.array(list(data.values()))
+st.header('Feature Shape')
 feat.shape
-(210, 1, 4096)
+
 
 # reshape so that there are 210 samples of 4096 vectors
 feat = feat.reshape(-1,4096)
+st.header('Reshaped Feature Shape')
 feat.shape
-(210, 4096)
+
 
 # get the unique labels (from the flower_labels.csv)
 df = pd.read_csv('flower_labels.csv')
@@ -141,7 +143,8 @@ x = pca.transform(feat)
 kmeans = KMeans(n_clusters=len(unique_labels), random_state=22)
 kmeans.fit(x)
 
-kmeans.labels_
+st.header('kmeans.labels_')
+st.write(kmeans.labels_)
 
 # holds the cluster id and the images { id: [images] }
 groups = {}
