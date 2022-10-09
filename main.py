@@ -38,7 +38,7 @@ colab_link = '[Assignment Colab File Link](https://colab.research.google.com/dri
 path = r"./static/flower_images/flower_images"
 
 # change the working directory to the path where the images are located
-os.chdir(path)
+#os.chdir(path)
 
 
 with header:
@@ -102,7 +102,7 @@ def extract_features(file, model):
     return features
 
 data = {}
-p = r"./static/flower_features.pkl" # path to save the extracted features
+p = r"nlp-cluster-webpage\static\flower_features.pkl" # path to save the extracted features
 
 # loop through each image in the dataset
 for flower in flowers:
