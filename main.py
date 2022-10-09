@@ -34,11 +34,12 @@ header = st.container()
 colab_file = st.container()
 colab_link = '[Assignment Colab File Link](https://colab.research.google.com/drive/14cROjof2KWO9GfbzpAUpOqhwB7wBbu7M?usp=sharing)'
 
+dirname = os.path.dirname(__file__)
 
-path = r"static\flower_images\flower_images"
+img_path = os.path.join(dirname, 'static/flower_images/flower_images')
 
 # change the working directory to the path where the images are located
-os.chdir(path)
+os.chdir(img_path)
 
 
 with header:
@@ -54,16 +55,16 @@ with colab_file:
 flowers = []
 
 # creates a ScandirIterator aliased as files
-with os.scandir(path) as files:
+with os.scandir(img_path) as files:
   # loops through each file in the directory
     for file in files:
         if file.name.endswith('.png'):
-          # adds only the image files to the flowers list
+            # adds only the image files to the flowers list
             flowers.append(file.name)
 
-    # view the first 15 flower entries
-    st.header('First 15 flower entries in the image directory')
-    st.image(flowers[:15])
+# view the first 15 flower entries
+st.header('First 15 flower entries in the image directory')
+st.image(flowers[:15])
 
 # load the image as a 224x224 array
 img = load_img(flowers[0], target_size=(224,224))
@@ -102,7 +103,8 @@ def extract_features(file, model):
     return features
 
 data = {}
-p = r"static\flower_features.flower_features.pkl" # path to save the extracted features
+# path to save the extracted features
+p = os.path.join(dirname, 'static/flower_features.pkl')
 
 # loop through each image in the dataset
 for flower in flowers:
