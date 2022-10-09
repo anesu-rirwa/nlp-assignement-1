@@ -35,7 +35,7 @@ colab_file = st.container()
 colab_link = '[Assignment Colab File Link](https://colab.research.google.com/drive/14cROjof2KWO9GfbzpAUpOqhwB7wBbu7M?usp=sharing)'
 
 
-path = r"C:\Users\anesu\OneDrive\Desktop\127.0.0.1\Urus\UZ\3.1\Machine Learning\nlp-cluster-webpage\static\flower_images\flower_images"
+path = r"./static/flower_images/flower_images"
 
 # change the working directory to the path where the images are located
 os.chdir(path)
@@ -102,7 +102,7 @@ def extract_features(file, model):
     return features
 
 data = {}
-p = r"C:\Users\anesu\OneDrive\Desktop\127.0.0.1\Urus\UZ\3.1\Machine Learning\nlp-cluster-webpage\static\flower_features.pkl" # path to save the extracted features
+p = r"./static/flower_features.pkl" # path to save the extracted features
 
 # loop through each image in the dataset
 for flower in flowers:
